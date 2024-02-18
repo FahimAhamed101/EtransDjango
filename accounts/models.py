@@ -73,3 +73,39 @@ class Account(AbstractBaseUser):
     
     def has_module_perms(self, add_label):
         return True
+
+class Profile(models.Model):
+    gender = (
+        ('MEN', 'MEN'),
+        ('FEMALE', 'FEMALE'),
+        ('OTHERS', 'OTHERS')
+    )
+    STATUS = (
+        ('HOME', 'HOME'),
+        ('OFFICE', 'OFFICE'),
+        ('OTHERS', 'OTHERS'),
+    )
+    user = models.ForeignKey(Account,on_delete=models.CASCADE)
+    profile_pic = models.ImageField(upload_to='profile/',max_length=500,default='profile/avatar.png')
+    first_name =  models.CharField(max_length=50 )
+    last_name =  models.CharField(max_length=50, null = True)
+  
+    Phone_number = models.CharField(max_length=50) 
+    gender = models.CharField(max_length=10, choices=gender, default='Male')
+    house = models.CharField(max_length=50, null = True)
+    town= models.CharField(max_length=50, null = True)
+    locality= models.CharField(max_length=50, null = True)
+    state = models.CharField(max_length=50, null = True)
+    country = models.CharField(max_length=50, null = True)
+    Address_type = models.CharField(max_length=10, choices=STATUS, default='HOME')
+
+    
+    zip = models.CharField(max_length=10 ,  blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username
+
+class Wallet(models.Model):
+    user = models.ForeignKey(Account,on_delete=models.CASCADE)
+    balance = models.FloatField( max_length=20, null = True, default= 0 )
+    is_applied = models.BooleanField(default=False)
