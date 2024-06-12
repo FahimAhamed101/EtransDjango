@@ -1,31 +1,23 @@
 from django.urls import path
 from . import views
 
-urlpatterns = [ 
-     #user side management
-     path('register/',views.register,name='register'),
-     path('login/',views.login,name='login'),
-     path('logout/',views.logout,name='logout'), 
+
+urlpatterns = [
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('', views.dashboard, name='dashboard'),
+
+    path('activate/<uidb64>/<token>/', views.activate, name='activate'),
+    path('forgotPassword/', views.forgotPassword, name='forgotPassword'),
+    path('resetpassword_validate/<uidb64>/<token>/', views.resetpassword_validate, name='resetpassword_validate'),
+    path('resetPassword/', views.resetPassword, name='resetPassword'),
+
+    path('my_orders/', views.my_orders, name='my_orders'),
+    path('edit_profile/', views.edit_profile, name='edit_profile'),
+    path('change_password/', views.change_password, name='change_password'),
+    path('order_detail/<int:order_id>/', views.order_detail, name='order_detail'),
 
 
-     #otp verification
-     path('login_otp/', views.login_otp, name='login_otp'),
-     path('login_otp1/<int:Phone_num>/', views.login_otp1, name='login_otp1'),
-     path('phone_number_verification/', views.phone_number_verification, name='phone_number_verification'),
-     path('phone_number_verify/', views.phone_number_verify, name='phone_number_verify'),
-     path('otp_verification/<int:Phone_number>/', views.otp_verification, name='otp_verification'),
-     
-     #user profile
-     path('profile/', views.profile, name='profile'),
-     path('change_password', views.change_password, name='change_password'),
-     
-     path('referel_add/', views.referel_add, name='referel_add'),
-     path('coupons/', views.coupons, name='coupons'),
-
-     path('Add_address/', views.Add_address, name='Add_address'),
-     path('address_delete/<int:id>/', views.address_delete, name='address_delete'),
-
-     
-   
-   
 ]

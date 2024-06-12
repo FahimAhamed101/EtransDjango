@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from store.models import Product
 from category.models import banner
-from cart.models import CartItem
-from adminpanel.models import Category_Offer
+from cart.models import CartItem,Category_Offer
+
 from .settings import MEDIA_ROOT
 from category.models import banner
 
 
 def home(request):
-    products = Product.objects.all().filter(Is_available=True)
+    products = Product.objects.order_by('-created_date').filter(is_available=True,Is_featured=True)
     cat_offer = Category_Offer.objects.all()
     
     for cat in cat_offer:

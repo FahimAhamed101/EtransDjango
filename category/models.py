@@ -1,9 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from accounts.models import Account
-
+from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
 
+    
 class Category(models.Model):
     category_name = models.CharField(max_length=50, unique = True )
     slug = models.SlugField(max_length=100, unique=True)
@@ -27,3 +28,7 @@ class banner(models.Model):
     banner_image =models.ImageField( upload_to='photos/banner', height_field=None, width_field=None, max_length=None,blank=True)
     
     is_selected = models.BooleanField(default=False)
+    
+    
+
+    
