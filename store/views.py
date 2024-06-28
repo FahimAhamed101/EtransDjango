@@ -1,36 +1,52 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Product,ReviewRating
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Product, ReviewRating, ProductGallery
 from category.models import Category
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-# Create your views here.
+from cart.models import CartItem
+from django.db.models import Q
+
+from cart.views import _cart_id
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.http import HttpResponse
+from .forms import ReviewForm
+from django.contrib import messages
+from orders.models import OrderProduct
+
 
 def store(request, category_slug=None):
     categories = None
-    product =None
+    products = None
+    min_price=0
+    max_price=0
     
-
+    if 'min_price' in request.GET:
+      
+        min_price=request.GET['min_price']
+        max_price=request.GET['max_price']
+        if max_price:
+            products = Product.objects.filter(price__gte=min_price,price__lte=max_price)
+            product_count = products.count()
     if category_slug != None:
-        categories = get_object_or_404(Category,slug=category_slug)
-        product = Product.objects.filter(category=categories,Is_available=True)
-        product_count = product.count()
+        categories = get_object_or_404(Category, slug=category_slug)
+        products = Product.objects.filter(category=categories, is_available=True)
+        paginator = Paginator(products, 1)
+        page = request.GET.get('page')
+        paged_products = paginator.get_page(page)
+        product_count = products.count()
     else:
-        
-        product = Product.objects.all().filter(Is_available=True)
-        product_count = product.count()
-    
-    
-    p  = Paginator(product, 6)
-    page_num  = request.GET.get('page')
-    try:
-        page        = p.page (page_num)
-    except PageNotAnInteger:
-        page        = p.page(1)
+        products = Product.objects.all().filter(is_available=True).order_by('id')
+        paginator = Paginator(products, 3)
+        page = request.GET.get('page')
+        paged_products = paginator.get_page(page)
+        product_count = products.count()
 
     context = {
-         'products': page,
-         'product_count':product_count,
-     }
-    return render(request, 'store/store.html',context)
+        'products': paged_products,
+        'product_count': product_count,
+        'min_price':min_price,
+        'max_price':max_price,
+    }
+    return render(request, 'store/store.html', context)
+
 
 def product_detail(request, category_slug, product_slug):
     try:
@@ -61,6 +77,8 @@ def product_detail(request, category_slug, product_slug):
         'product_gallery': product_gallery,
     }
     return render(request, 'store/product_detail.html', context)
+
+
 def search(request):
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
@@ -72,6 +90,8 @@ def search(request):
         'product_count': product_count,
     }
     return render(request, 'store/store.html', context)
+
+
 def submit_review(request, product_id):
     url = request.META.get('HTTP_REFERER')
     if request.method == 'POST':
