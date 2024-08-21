@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from decouple import config
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,7 +45,12 @@ INSTALLED_APPS = [
     'django_extensions',
      'mathfilters',
        'wishlist',
-      
+       'django.contrib.sites',
+      'allauth',
+        'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +61,48 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
 ]
+SOCIALACCOUNT_PROVIDERS = {
+   
+    "google": {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+       
+     
+        # These are provider-specific settings that can only be
+        # listed here:
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        }
+    },
+    'facebook':
+{'METHOD': 'oauth2',
+'SCOPE': ['email','public_profile', 'user_friends'],
+'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+'FIELDS': [
+'id',
+'email',
+'name',
+'first_name',
+'last_name',
+'verified',
+'locale',
+'timezone',
+'link',
+'gender',
+'updated_time'],
+'EXCHANGE_TOKEN': True,
+'LOCALE_FUNC': lambda request: 'kr_KR',
+'VERIFIED_EMAIL': False,
+'VERSION': 'v2.4'}}
+
 
 ROOT_URLCONF = 'EtransDjango.urls'
 
@@ -89,6 +135,24 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+SITE_ID =1
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_USERNAME_REQURIED=True
+LOGIN_REDIRECT_URL = "/"
+SOCIALACCOUNT_LOGIN_ON_GET =True
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS =True
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+AUTHENTICATION_BACKENDS = [
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
 
 
 # Password validation
@@ -138,3 +202,11 @@ MEDIA_ROOT = BASE_DIR/'media'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CROS_ORIGIN_ALLOW_ALL = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# SMTP configuration
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)

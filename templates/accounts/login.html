@@ -42,10 +42,13 @@ Already verified? <a href="{% url 'login' %}">Login</a>
              
           </div>
            <!-- form-group// -->
-      </form> <button class="btn btn-light text-white btn-block" ><a href="{% provider_login_url 'facebook' %}">Login with facebook</a></button> <button class="btn btn-danger btn-block"><a href="{% provider_login_url 'google' %}">Login with Google</a></button> 
+      </form></button> 
+      
+    
       </div> <!-- card-body.// -->
     </div> <!-- card .// -->
-
+    <button class="btn btn-light text-white btn-block" > 
+       <button class="btn btn-danger btn-block"><a href="{% provider_login_url 'google' %}">Login with Google</a></button> <a href="{% provider_login_url 'facebook' %}">Login with facebook</a>
      <p class="text-center mt-4">Don't have account? <a href="{% url 'register' %}">Sign up</a></p>
      <br><br>
     
