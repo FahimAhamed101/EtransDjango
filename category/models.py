@@ -24,7 +24,17 @@ class Category(models.Model):
 
 
 class banner(models.Model):
+    banner_name = models.CharField(max_length=50, unique = True,null=True )
+    banner_title = models.CharField(max_length=50, unique = True,null=True )
+    banner_description = models.CharField(max_length=50, unique = True,null=True )
+    banner_image =models.ImageField( upload_to='photos/banner', height_field=None, width_field=None, max_length=None,blank=True)
     
+    is_selected = models.BooleanField(default=False)
+    
+class banneractive(models.Model):
+    banner_name = models.CharField(max_length=50, unique = True,null=True )
+    banner_title = models.CharField(max_length=50, unique = True,null=True )
+    banner_description = models.CharField(max_length=50, unique = True,null=True )
     banner_image =models.ImageField( upload_to='photos/banner', height_field=None, width_field=None, max_length=None,blank=True)
     
     is_selected = models.BooleanField(default=False)

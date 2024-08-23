@@ -4,7 +4,7 @@ from category.models import banner
 from cart.models import CartItem,Category_Offer
 
 from .settings import MEDIA_ROOT
-from category.models import banner
+from category.models import banner,banneractive
 
 
 def home(request):
@@ -37,6 +37,7 @@ def home(request):
 
                 
     banners = banner.objects.filter(is_selected =True).order_by('id')
+    banneractives = banneractive.objects.filter(is_selected =True).order_by('id')
     user = request.user
     if user.is_active == True:
         cart_count = CartItem.objects.filter(user=request.user,is_active=True).count()
@@ -54,6 +55,7 @@ def home(request):
         'cat_offer':cat_offer,
         'products': products,
         'banners':banners,
+        'banneractive':banneractives,
         'cart_count':cart_count,
 
     }

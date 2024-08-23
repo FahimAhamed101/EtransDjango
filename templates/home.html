@@ -17,6 +17,7 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item active">
+
 							<div class="row d-flex align-items-center">
 								<div class="col d-none d-lg-flex justify-content-center">
 									<div class="">
@@ -28,42 +29,39 @@
 									</div>
 								</div>
 								<div class="col">
-									<img src="assets/images/slider/04.png" class="img-fluid" alt="...">
+									{% for img in banneractive %}
+									{% if img.is_selected == True %}
+									<img src="{{ img.banner_image.url }}" class="img-fluid" alt="...">
+									{% else %}
+									<div class="main_slider" style="background-image:url({% static 'images/slider_1.jpg' %})">
+									{% endif %}
+									{% endfor %}
 								</div>
 							</div>
 						</div>
+						{% for banner in banners %}
 						<div class="carousel-item">
 							<div class="row d-flex align-items-center">
 								<div class="col d-none d-lg-flex justify-content-center">
 									<div class="">
-										<h3 class="h3 fw-light">Hurry up! Limited time offer.</h3>
-										<h1 class="h1">Women Sportswear Sale</h1>
-										<p class="pb-3">Sneakers, Keds, Sweatshirts, Hoodies &amp; much more...</p>
+										<h3 class="h3 fw-light">{{banner.banner_name}}</h3>
+										<h1 class="h1">{{banner.banner_title }}</h1>
+										<p class="pb-3">{{banner.banner_description}}</p>
 										<div class=""> <a class="btn btn-white btn-ecomm" href="javascript:;">Shop Now <i class='bx bx-chevron-right'></i></a>
 										</div>
 									</div>
 								</div>
 								<div class="col">
-									<img src="assets/images/slider/05.png" class="img-fluid" alt="...">
+									{% if banner.is_selected == True %}
+									<img src="{{ banner.banner_image.url }}" class="img-fluid" alt="...">
+									{% else %}
+	<div class="main_slider" style="background-image:url({% static 'images/slider_1.jpg' %})">
+	{% endif %}
 								</div>
 							</div>
 						</div>
-						<div class="carousel-item">
-							<div class="row d-flex align-items-center">
-								<div class="col d-none d-lg-flex justify-content-center">
-									<div class="">
-										<h3 class="h3 fw-light">Complete your look with</h3>
-										<h1 class="h1">New Men's Accessories</h1>
-										<p class="pb-3">Hats &amp; Caps, Sunglasses, Bags &amp; much more...</p>
-										<div class=""> <a class="btn btn-dark btn-ecomm" href="javascript:;">Shop Now <i class='bx bx-chevron-right'></i></a>
-										</div>
-									</div>
-								</div>
-								<div class="col">
-									<img src="assets/images/slider/03.png" class="img-fluid" alt="...">
-								</div>
-							</div>
-						</div>
+						{% endfor %}
+					
 					</div>
 					<a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-bs-slide="prev">	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span class="visually-hidden">Previous</span>
