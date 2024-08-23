@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+  
+    "django_htmx",
+    "taggit",   'blog', 
 ]
 
 MIDDLEWARE = [
@@ -63,6 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
+      "django_htmx.middleware.HtmxMiddleware",
 ]
 SOCIALACCOUNT_PROVIDERS = {
    
@@ -119,6 +123,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                       'category.context_list.menu_links',
             ],
+             "builtins": ['blog.templatetags.tag_cloud',
+                         'blog.templatetags.markdown_processing', ] 
         },
     },
 ]
