@@ -5,7 +5,7 @@ from accounts.models import Account
 from django.db.models import Avg, Count
 from category.models import Category
 # Create your models here.
-
+from django.core.validators import MinValueValidator, MaxValueValidator
 class Product(models.Model):
     product_name    = models.CharField(max_length=200, unique=True)
     slug            = models.SlugField(max_length=200, unique=True)
@@ -15,10 +15,13 @@ class Product(models.Model):
     image2       = models.ImageField(upload_to = 'photos/products',blank=True)
     image3       = models.ImageField(upload_to = 'photos/products',blank=True)
     stock           = models.IntegerField()
+    offer_price = models.IntegerField(null=True, blank=True)    
+    offer_perc =  models.IntegerField(null=True, blank=True, default= 0)
     is_available    = models.BooleanField(default=True)
     category        = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_date    = models.DateTimeField(auto_now_add=True)
     modified_date   = models.DateTimeField(auto_now=True)
+    product_offer = models.IntegerField(null=True, blank=True ,default= 0, validators=[MinValueValidator(0),MaxValueValidator(100)])
     Is_featured  = models.BooleanField(default=True)
     def get_url(self):
         return reverse('product_detail', args=[self.category.slug, self.slug])

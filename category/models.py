@@ -21,7 +21,13 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category_name
-
+    
+class Category_Offer(models.Model):
+    category = models.OneToOneField(Category,on_delete=models.CASCADE)
+    discount = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)])
+    active = models.BooleanField( default=True)
+    def __str__(self):
+            return self.category.category_name
 
 class banner(models.Model):
     banner_name = models.CharField(max_length=50, unique = True,null=True )

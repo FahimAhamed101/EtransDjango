@@ -1,15 +1,17 @@
 from django.shortcuts import render
 from store.models import Product
-from category.models import banner
-from cart.models import CartItem,Category_Offer
+from category.models import banner,Category
+from cart.models import CartItem
 
 from .settings import MEDIA_ROOT
-from category.models import banner,banneractive
+from category.models import banner,banneractive,Category_Offer
 
 
 def home(request):
     products = Product.objects.order_by('-created_date').filter(is_available=True,Is_featured=True)
+    products_new = Product.objects.order_by('-created_date').filter(is_available=True)
     cat_offer = Category_Offer.objects.all()
+    category = Category.objects.all()
     
     for cat in cat_offer:
         for product in products: 
@@ -50,8 +52,8 @@ def home(request):
 
 
     context = {
-
-        
+'products_new':products_new,
+        'category':category,
         'cat_offer':cat_offer,
         'products': products,
         'banners':banners,
