@@ -37,6 +37,14 @@ class banner(models.Model):
     
     is_selected = models.BooleanField(default=False)
     
+class bannertwo(models.Model):
+    
+    banner_title = models.CharField(max_length=50, unique = True,null=True )
+    banner_description = models.CharField(max_length=50, unique = True,null=True )
+    banner_images = models.ImageField( upload_to='photos/bannertwo', height_field=None, width_field=None, max_length=None,blank=True)
+    
+    is_selected = models.BooleanField(default=False)
+    
 class banneractive(models.Model):
     banner_name = models.CharField(max_length=50, unique = True,null=True )
     banner_title = models.CharField(max_length=50, unique = True,null=True )

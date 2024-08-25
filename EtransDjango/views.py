@@ -4,7 +4,7 @@ from category.models import banner,Category
 from cart.models import CartItem
 
 from .settings import MEDIA_ROOT
-from category.models import banner,banneractive,Category_Offer
+from category.models import banner,banneractive,Category_Offer,bannertwo
 
 
 def home(request):
@@ -37,7 +37,7 @@ def home(request):
                 pass
     
 
-                
+    bannerstwo = bannertwo.objects.filter(is_selected =True).order_by('id') 
     banners = banner.objects.filter(is_selected =True).order_by('id')
     banneractives = banneractive.objects.filter(is_selected =True).order_by('id')
     user = request.user
@@ -52,6 +52,7 @@ def home(request):
 
 
     context = {
+        'bannertwo':bannerstwo,
 'products_new':products_new,
         'category':category,
         'cat_offer':cat_offer,
