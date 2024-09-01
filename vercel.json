@@ -1,0 +1,28 @@
+{
+    "builds": [
+      {
+        "src": "EtransDjango/wsgi.py",
+        "use": "@vercel/python",
+        "config":{"maxLambdaSize":"15mb","runtime":"python3.9"}
+      },
+      {
+        "src": "now_build_staticfiles.sh",
+        "use": "@now/static-build",
+        "config": {
+          "distDir": "staticfiles_build"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+    },
+      {
+        "src": "/(.*)",
+        "dest": "EtransDjango//wsgi.py"
+      }
+    ],
+    "outputDirectory": "staticfiles_build"
+  
+}

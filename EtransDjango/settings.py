@@ -12,11 +12,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from decouple import config
 from pathlib import Path
 import os
+import dj_database_url
+import cloudinary_storage
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
+#  pip freeze > requirements.txt  Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-(@&&^pd(0-r9s5gx5t=$()q5uzao@8)7epqjlv4u#ff-=jm%h5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','.now.sh']
 
 
 # Application definition
@@ -54,6 +56,9 @@ INSTALLED_APPS = [
   
     "django_htmx",
     "taggit",   'blog', 
+     'cloudinary_storage',
+    
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -135,13 +140,15 @@ WSGI_APPLICATION = 'EtransDjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}"""
+DATABASES = {
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL'), conn_max_age=600),
 }
-
 SITE_ID =1
 ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_USERNAME_REQURIED=True
@@ -196,8 +203,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT  = os.path.join(BASE_DIR, 'bestbuyproject/staticfiles')
-
+#STATIC_ROOT  = os.path.join(BASE_DIR, 'bestbuyproject/staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 STATICFILES_DIRS = [ 
     os.path.join('static')
 ]
@@ -216,3 +223,9 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'fahim1213456',
+    'API_KEY': '554889398149233',
+    'API_SECRET': 'xOh9Pctuw1UhBuRrj_XuP79ubbA'
+}
