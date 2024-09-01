@@ -20,7 +20,7 @@
     },
       {
         "src": "/(.*)",
-        "dest": "EtransDjango//wsgi.py"
+        "dest": "EtransDjango/wsgi.py"
       }
     ],
     "outputDirectory": "staticfiles_build"
