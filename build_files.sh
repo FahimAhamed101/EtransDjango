@@ -1,7 +1,7 @@
-
-
-# Install Python 3.6 since it is missing in the Now build environment
 # build_files.sh
+
+
+
 
 pip install -r requirements.txt
 
