@@ -3,8 +3,8 @@
 
 
 
-pipenv install
-pipenv shell
+python3 -m pipenv install
+python3 -m pipenv shell
 pip install --upgrade pip
 pip install -r requirements.txt
 python3 manage.py makemigrations
