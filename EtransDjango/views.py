@@ -3,7 +3,7 @@ from store.models import Product
 from category.models import banner,Category
 from cart.models import CartItem
 
-from .settings import MEDIA_ROOT
+
 from category.models import banner,banneractive,Category_Offer,bannertwo
 from blog.models import Post
 
@@ -64,7 +64,7 @@ def home(request):
         'posts':posts,
 
     }
-    print(MEDIA_ROOT)
+    
     return render(request,'home.html',context)
 
 
