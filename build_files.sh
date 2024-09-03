@@ -3,7 +3,7 @@
 
 
 
-python3 -m pipenv install
+python3 -m pip install pipenv
 python3 -m pipenv shell
 pip install --upgrade pip
 pip install -r requirements.txt
