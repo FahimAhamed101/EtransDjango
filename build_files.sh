@@ -3,7 +3,9 @@
 
 
 python3 -m venv env
-source env/bin/activate
+source env/Scripts/activate
+pipenv install
+pipenv shell
 python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 python3 manage.py makemigrations
