@@ -14,14 +14,7 @@
       }
     ],
     "routes": [
-      {
-        "src": "/static/(.*)",
-        "dest": "/static/$1"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/static/$1"
-  },
+   
       {
         "src": "/(.*)",
         "dest": "EtransDjango/wsgi.py"
