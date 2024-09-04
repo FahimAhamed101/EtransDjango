@@ -72,7 +72,7 @@ MIDDLEWARE = [
     # Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
       "django_htmx.middleware.HtmxMiddleware",
-       "whitenoise.middleware.WhiteNoiseMiddleware",
+       #"whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 SOCIALACCOUNT_PROVIDERS = {
    
@@ -232,7 +232,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
