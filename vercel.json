@@ -9,7 +9,7 @@
        "src": "bash build_files.sh",
        "use": "@now/static-build",
       "config": {
-          "distDir": "staticfiles_build"
+          "distDir": "static"
         }
       }
     ],
@@ -23,6 +23,6 @@
         "dest": "EtransDjango/wsgi.py"
       }
     ],
-    "outputDirectory": "staticfiles_build"
+    "outputDirectory": "static"
   
 }
