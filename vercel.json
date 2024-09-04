@@ -7,22 +7,17 @@
       },
       {
        "src": "bash build_files.sh",
-       "use": "@now/static-build",
-      "config": {
-          "distDir": "staticfiles"
-        }
+       "use": "@vercel/static-build"
+      
       }
     ],
     "routes": [
-      {
-        "src": "/static/(.*)",
-        "dest": "/static/$1"
-    },
+    
       {
         "src": "/(.*)",
         "dest": "EtransDjango/wsgi.py"
       }
-    ],
-    "outputDirectory": "staticfiles"
+    ]
+
   
 }
