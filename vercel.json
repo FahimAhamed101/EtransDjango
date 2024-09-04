@@ -9,8 +9,8 @@
        "src": "bash build_files.sh",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "staticfiles_build"
-      }
+          "distDir": "staticfiles_build"
+        }
       }
     ],
     "routes": [
@@ -18,6 +18,10 @@
         "src": "/static/(.*)",
         "dest": "/static/$1"
     },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/static/$1"
+  },
       {
         "src": "/(.*)",
         "dest": "EtransDjango/wsgi.py"
