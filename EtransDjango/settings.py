@@ -212,9 +212,9 @@ STATICFILES_DIRS = [
 ]"""
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [BASE_DIR / 'staticfiles']
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 #media files
 #MEDIA_URL = '/media/'
