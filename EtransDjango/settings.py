@@ -56,9 +56,9 @@ INSTALLED_APPS = [
   
     "django_htmx",
     "taggit",   'blog', 
-     
+     'cloudinary_storage',
     
-    'cloudinary','cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -215,7 +215,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 
 #media filesprint(STATIC_ROOT)
-#MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'
 
 #MEDIA_ROOT = BASE_DIR/'media'
 
