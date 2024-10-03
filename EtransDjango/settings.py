@@ -56,9 +56,9 @@ INSTALLED_APPS = [
   
     "django_htmx",
     "taggit",   'blog', 
-     'cloudinary_storage',
+     
     
-    'cloudinary'
+    'cloudinary','cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -142,15 +142,15 @@ WSGI_APPLICATION = 'EtransDjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-"""DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}"""
-DATABASES = {
-    'default': dj_database_url.parse(os.getenv('DATABASE_URL'), conn_max_age=600),
 }
+"""DATABASES = {
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL'), conn_max_age=600),
+}"""
 SITE_ID =1
 ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_USERNAME_REQURIED=True
@@ -204,39 +204,39 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-"""STATIC_URL = 'static/'
+#STATIC_URL = 'static/'
 #STATIC_ROOT  = os.path.join(BASE_DIR, 'bestbuyproject/staticfiles')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-STATICFILES_DIRS = [ 
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+"""STATICFILES_DIRS = [ 
     os.path.join('static')
 ]"""
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
+#STATIC_ROOT = BASE_DIR / 'static'
 print(STATIC_ROOT)
 
 #media files
-#MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'
 
-#MEDIA_ROOT = BASE_DIR/'media'
+MEDIA_ROOT = BASE_DIR/'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CROS_ORIGIN_ALLOW_ALL = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+"""EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # SMTP configuration
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)"""
 
 #STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'fahim1213456',
     'API_KEY': '554889398149233',
     'API_SECRET': 'xOh9Pctuw1UhBuRrj_XuP79ubbA'
 }
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
