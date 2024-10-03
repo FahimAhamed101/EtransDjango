@@ -40,7 +40,7 @@ def register(request):
             profile.save()
 
             # USER ACTIVATION
-            current_site = get_current_site(request)
+            """current_site = get_current_site(request)
             mail_subject = 'Please activate your account'
             message = render_to_string('accounts/account_verification_email.html', {
                 'user': user,
@@ -50,7 +50,7 @@ def register(request):
             })
             to_email = email
             send_email = EmailMessage(mail_subject, message, to=[to_email])
-            send_email.send()
+            send_email.send()"""
             # messages.success(request, 'Thank you for registering with us. We have sent you a verification email to your email address [rathan.kumar@gmail.com]. Please verify it.')
             return redirect('/accounts/login/?command=verification&email='+email)
     else:
@@ -170,7 +170,7 @@ def forgotPassword(request):
             user = Account.objects.get(email__exact=email)
 
             # Reset password email
-            current_site = get_current_site(request)
+            """current_site = get_current_site(request)
             mail_subject = 'Reset Your Password'
             message = render_to_string('accounts/reset_password_email.html', {
                 'user': user,
@@ -180,7 +180,7 @@ def forgotPassword(request):
             })
             to_email = email
             send_email = EmailMessage(mail_subject, message, to=[to_email])
-            send_email.send()
+            send_email.send()"""
 
             messages.success(request, 'Password reset email has been sent to your email address.')
             return redirect('login')
