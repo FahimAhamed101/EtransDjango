@@ -20,7 +20,7 @@ Already verified? <a href="{% url 'login' %}">Login</a>
 
 	<div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
 
-      <div class="card-body">
+      <div class="card-body ">
       <h4 class="card-title mb-4">Sign in</h4>
       {% include 'includes/alerts.html' %}
       <form action="{% url 'login' %}" method="POST">
@@ -42,15 +42,14 @@ Already verified? <a href="{% url 'login' %}">Login</a>
              
           </div>
            <!-- form-group// -->
-      </form></button> 
-      
-    
-      </div> <!-- card-body.// -->
-    </div> <!-- card .// -->
-    <button class="btn btn-light text-white btn-block" > 
+      </form>
        <button class="btn btn-danger btn-block"><a href="{% provider_login_url 'google' %}">Login with Google</a></button> <a href="{% provider_login_url 'facebook' %}">Login with facebook</a>
      <p class="text-center mt-4">Don't have account? <a href="{% url 'register' %}">Sign up</a></p>
      <br><br>
+    
+      </div> <!-- card-body.// -->
+    </div> <!-- card .// -->
+   
     
 <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
 {% endif %}
