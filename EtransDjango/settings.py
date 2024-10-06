@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+      'cloudinary_storage',
+    
+    'cloudinary',
     'category',
     'accounts',
     'store',
@@ -56,9 +59,7 @@ INSTALLED_APPS = [
   
     "django_htmx",
     "taggit",   'blog', 
-     'cloudinary_storage',
-    
-    'cloudinary',
+   
 ]
 
 MIDDLEWARE = [
@@ -215,7 +216,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 
 #media filesprint(STATIC_ROOT)
-MEDIA_URL = '/media/'
+#MEDIA_URL = '/media/'
 
 #MEDIA_ROOT = BASE_DIR/'media'
 
