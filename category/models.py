@@ -23,7 +23,7 @@ class Category(models.Model):
         return self.category_name
     
 class Category_Offer(models.Model):
-    category = models.OneToOneField(Category,on_delete=models.CASCADE)
+    category = models.OneToOneField(Category,on_delete=models.CASCADE,null=True)
     discount = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)])
     active = models.BooleanField( default=True)
     def __str__(self):
