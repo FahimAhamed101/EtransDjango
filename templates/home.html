@@ -270,29 +270,7 @@
 				</section>
 				<!--end New Arrivals-->
 				<!--start Advertise banners-->
-				<section class="py-4">
-					<div class="container">
-						<div class="add-banner">
-							<div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
-								{% for cat in cat_offer %}
-
-								<div class="col d-flex">
-									<div class="card rounded-0 w-100">
-										<img src="{{cat.category.category_image.url}}" class="card-img-top" alt="...">
-										<div class="position-absolute top-0 end-0 m-3 product-discount"><span class="">-{{cat.discount}}%</span>
-										</div>
-										<div class="card-body">
-											<h5 class="card-title">{{cat.category.category_name}}</h5>
-											<p class="card-text">{{cat.category.description}}</p> <a href="{{cat.category.get_url}}" class="btn btn-light btn-ecomm">SHOP BY {{cat.category.category_name}}</a>
-										</div>
-									</div>
-								</div>
-							{% endfor %}
-							</div>
-							<!--end row-->
-						</div>
-					</div>
-				</section>
+		
 				<!--end Advertise banners-->
 				<!--start categories-->
 				<section class="py-4">
