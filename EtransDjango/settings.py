@@ -24,13 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-(@&&^pd(0-r9s5gx5t=$()q5uzao@8)7epqjlv4u#ff-=jm%h5'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production!Application definition
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','.now.sh']
+# ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','.now.sh']
 
+ALLOWED_HOSTS = ['*']
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -148,10 +148,18 @@ WSGI_APPLICATION = 'EtransDjango.wsgi.application'
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}"""
+}
 DATABASES = {
     'default': dj_database_url.parse(os.getenv('DATABASE_URL'), conn_max_age=600),
 }
+"""
+
+DATABASES = {
+     'default': dj_database_url.config(
+         default=config('DATABASE_URL')
+     )
+ }
+
 
 SITE_ID =1
 ACCOUNT_EMAIL_REQUIRED=True
