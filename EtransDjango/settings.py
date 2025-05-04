@@ -148,17 +148,17 @@ WSGI_APPLICATION = 'EtransDjango.wsgi.application'
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+}"""
 DATABASES = {
-    'default': dj_database_url.parse(os.getenv('DATABASE_URL'), conn_max_age=600),
+    'default': dj_database_url.parse('postgres://neondb_owner:npg_qeH7Vi0YUQsK@ep-autumn-queen-a41u2jb9-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require', conn_max_age=600),
 }
-"""
 
-DATABASES = {
+
+"""DATABASES = {
      'default': dj_database_url.config(
          default=config('DATABASE_URL')
      )
- }
+ }"""
 
 
 SITE_ID =1

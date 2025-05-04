@@ -1,0 +1,134 @@
+[
+{
+  "model": "store.product",
+  "pk": 1,
+  "fields": {
+    "product_name": "laptop",
+    "slug": "laptop",
+    "description": "laptops for all",
+    "price": 300,
+    "image1": "photos/products/51yJKh1Kn0L._AC_UL375_SR375375_.jpg",
+    "image2": "photos/products/thumb-228x228.jpg",
+    "image3": "photos/products/kari-shea-1SAnrIxw5OY-unsplash.jpg",
+    "stock": 7,
+    "offer_price": 200,
+    "offer_perc": 300,
+    "is_available": true,
+    "category": 1,
+    "created_date": "2025-05-04T18:45:55.027Z",
+    "modified_date": "2025-05-04T18:45:55.027Z",
+    "product_offer": 100,
+    "Is_featured": true
+  }
+},
+{
+  "model": "store.product",
+  "pk": 2,
+  "fields": {
+    "product_name": "tshirt",
+    "slug": "tshirt",
+    "description": "all type of tshirs",
+    "price": 250,
+    "image1": "photos/products/images.jfif",
+    "image2": "photos/products/capturing-light-photographer-shirt.png",
+    "image3": "photos/products/images_2.jfif",
+    "stock": 4,
+    "offer_price": 200,
+    "offer_perc": 30,
+    "is_available": true,
+    "category": 2,
+    "created_date": "2025-05-04T18:46:55.336Z",
+    "modified_date": "2025-05-04T18:46:55.336Z",
+    "product_offer": 100,
+    "Is_featured": true
+  }
+},
+{
+  "model": "store.variation",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "variation_category": "color",
+    "variation_value": "blue",
+    "is_active": true,
+    "created_date": "2025-05-04T18:50:53.465Z"
+  }
+},
+{
+  "model": "store.variation",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "variation_category": "size",
+    "variation_value": "25",
+    "is_active": true,
+    "created_date": "2025-05-04T18:51:01.090Z"
+  }
+},
+{
+  "model": "store.variation",
+  "pk": 3,
+  "fields": {
+    "product": 2,
+    "variation_category": "color",
+    "variation_value": "blue",
+    "is_active": true,
+    "created_date": "2025-05-04T18:51:09.344Z"
+  }
+},
+{
+  "model": "store.variation",
+  "pk": 4,
+  "fields": {
+    "product": 2,
+    "variation_category": "size",
+    "variation_value": "M",
+    "is_active": true,
+    "created_date": "2025-05-04T18:51:22.151Z"
+  }
+},
+{
+  "model": "store.variation",
+  "pk": 5,
+  "fields": {
+    "product": 1,
+    "variation_category": "color",
+    "variation_value": "blue",
+    "is_active": true,
+    "created_date": "2025-05-04T18:51:41.024Z"
+  }
+},
+{
+  "model": "store.variation",
+  "pk": 6,
+  "fields": {
+    "product": 1,
+    "variation_category": "size",
+    "variation_value": "30",
+    "is_active": true,
+    "created_date": "2025-05-04T18:51:50.367Z"
+  }
+},
+{
+  "model": "store.variation",
+  "pk": 7,
+  "fields": {
+    "product": 2,
+    "variation_category": "color",
+    "variation_value": "black",
+    "is_active": true,
+    "created_date": "2025-05-04T18:52:04.287Z"
+  }
+},
+{
+  "model": "store.variation",
+  "pk": 8,
+  "fields": {
+    "product": 2,
+    "variation_category": "size",
+    "variation_value": "S",
+    "is_active": true,
+    "created_date": "2025-05-04T18:52:13.248Z"
+  }
+}
+]

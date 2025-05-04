@@ -1,0 +1,44 @@
+[
+{
+  "model": "category.category",
+  "pk": 1,
+  "fields": {
+    "category_name": "laptop",
+    "slug": "laptop",
+    "description": "laptops",
+    "category_image": "photos/categories/kari-shea-1SAnrIxw5OY-unsplash.jpg"
+  }
+},
+{
+  "model": "category.category",
+  "pk": 2,
+  "fields": {
+    "category_name": "tshirts",
+    "slug": "tshirts",
+    "description": "tshirts",
+    "category_image": "photos/categories/images.jfif"
+  }
+},
+{
+  "model": "category.banner",
+  "pk": 1,
+  "fields": {
+    "banner_name": "sales",
+    "banner_title": "sales",
+    "banner_description": "sale for all",
+    "banner_image": "photos/banner/360_F_316376413_nYL2jpLONPQPOsy31DE86n7FPpSxPIi3.jpg",
+    "is_selected": true
+  }
+},
+{
+  "model": "category.banner",
+  "pk": 2,
+  "fields": {
+    "banner_name": "banner two",
+    "banner_title": "bannertwo",
+    "banner_description": "banner no two",
+    "banner_image": "photos/banner/flash-sale-banner-260nw-1199820877.webp",
+    "is_selected": true
+  }
+}
+]
